@@ -1,56 +1,48 @@
-/* 
-* CSS Reset by Picalli https://andy-bell.co.uk/a-modern-css-reset/ 
-*/
+/* * * * * * * * * * *  *\
+ * CSS Reset by Picalli *
+\* * * * * * * * * * *  */
 
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin: 0;
+* {
+    margin: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
-  list-style: none;
+    list-style: none;
+    padding: 0;
 }
 
 /* Set core root defaults */
 html:focus-within {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-  text-decoration-skip-ink: auto;
+    text-decoration-skip-ink: auto;
 }
 
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%;
-  display: block;
+    max-width: 100%;
+    display: block;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -58,27 +50,131 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
-/*
-*
-*
-*
-*/
+/* * * * * * *\
+ * Variables *
+\* * * * * * */
+
+@font-face {
+    font-family: Sono;
+    src: url(./../assets/font/Sono.woff2) format("woff2");
+}
+
+:root {
+    --primary-clr-500: hsl(221, 59%, 29%);
+    --secondary-clr-500: hsl(220, 60%, 95%);
+    --secondary-clr-600: hsl(0, 100%, 100%);
+
+    --fs-200: 1.0rem;
+    --fs-500: 1.2rem;
+    --fs-600: 1.4rem;
+    --fs-700: 1.6rem;
+    --fs-800: 2rem;
+    --fs-900: 2.4rem;
+    
+    --size-300: 1rem;
+    --size-400: 1.5rem;
+    --size-500: 2rem;
+    --size-600: 2.5rem;
+    --size-700: 4rem;
+
+    --ff: Sono, Times, serif;
+}
+
+/* * * * * * * * * *\
+ * General styling *
+\* * * * * * * * * */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--ff);
+    background-image: linear-gradient(to bottom,
+            var(--primary-clr-500) 0%,
+            var(--primary-clr-500) 30%,
+            var(--secondary-clr-500) 30%,
+            var(--secondary-clr-500) 100%);
+}
+
+.container{
+    display: grid;
+    grid-template-columns: minmax(fit-content, 1fr) 4fr;
+}
+
+/* * * * * * * *  *\
+ * Navigation bar *
+\ * * * * * * * * */
+
+.nav{
+    height: 100vh;
+    background-color: var(--secondary-clr-600);
+    color: var(--secondary-clr-600);
+    font-size: var(--fs-700);
+    color: black;
+
+    box-shadow: 0px 0px 50px -25px black;
+
+    grid-area: 1/1/3/2;
+}
+
+.nav >:last-child{
+    margin-top: var(--size-700);
+}
+
+.nav>:first-child{
+    background-color: var(--primary-clr-500);
+    color: var(--secondary-clr-600);
+    padding: var(--size-400) var(--size-600);
+    font-size: var(--fs-900);
+}
+
+.nav li{
+    margin-block: var(--size-300);
+    padding: var(--size-400) var(--size-600);
+    cursor: pointer;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.nav li:hover{
+    background-color: var(--primary-clr-500);
+    color: var(--secondary-clr-600);
+}
+
+.nav li:hover svg{
+    fill: var(--secondary-clr-600);
+}
+
+svg{
+    width: 25px;
+    height: 25px;
+    margin-right: var(--size-300);
+    fill: var(--primary-clr-500);
+}  
+
+.logo img{
+    width: 50px;
+    display: inline;
+}
