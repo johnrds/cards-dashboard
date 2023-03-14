@@ -79,9 +79,10 @@ select {
 }
 
 :root {
+    --primary-clr-400: hsl(225, 57%, 8%);
     --primary-clr-500: hsl(221, 59%, 29%);
     --primary-clr-600: hsl(221, 59%, 50%);
-    --secondary-clr-500: hsl(220, 60%, 95%);
+    --secondary-clr-500: hsl(214, 32%, 91%);
     --secondary-clr-600: hsl(0, 100%, 100%);
 
     --fs-200: 1.0rem;
@@ -116,6 +117,7 @@ html {
 }
 
 svg {
+    cursor: pointer;
     width: 25px;
     height: 25px;
     margin-right: var(--size-300);
@@ -166,6 +168,16 @@ svg {
     pointer-events: none;
 }
 
+.nav li:hover{
+    border-left: 5px groove var(--primary-clr-600);
+    background-color: var(--secondary-clr-500);
+}
+
+.nav li.selected:hover{
+    border-left: none;
+    background-color: var(--primary-clr-500);
+}
+
 .nav.hidden{
     width: 70px;
 }
@@ -208,7 +220,7 @@ svg {
 
     display: flex;
     align-items: center;
-    transition: all 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
 }
 
 .nav .selected {
@@ -252,7 +264,6 @@ svg {
 
 .header svg {
     fill: var(--secondary-clr-600);
-    cursor: pointer;
 }
 
 .header img {
@@ -323,6 +334,13 @@ svg {
 
 .main{
     grid-area: 2/2/3/3;
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: var(--size-600);
+
+    background-color: var(--secondary-clr-500);
+    font-size: var(--fs-600);
 }
 
 .main img{
@@ -331,4 +349,41 @@ svg {
     border-radius: 50%;
     background-color: white;
     border: 1px solid black;
+}
+
+.main h2{
+    margin-bottom: var(--size-300);
+}
+
+.main svg{
+    fill: black;
+}
+
+/* * * * * * * * *\
+* Project cards *
+\* * * * * * * * */
+
+.main .projects{
+    grid-area: 1/1/3/2;
+}
+
+.cards{
+    display: grid;
+    gap: var(--size-600);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
+}
+
+.card{
+    background-color: var(--secondary-clr-600);
+    padding: var(--size-500);
+    border-radius: 5px 20px;
+    border-left: 10px solid var(--primary-clr-400);
+}
+
+.card svg{
+    margin-top: var(--size-400);
+}
+
+.card h3{
+    margin-bottom: var(--size-400);
 }
